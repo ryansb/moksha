@@ -280,13 +280,11 @@ class CentralMokshaHub(MokshaHub):
                         #   https://fedorahosted.org/moksha/ticket/245
                         #   https://github.com/gregjurman/zmqfirewall
 
-                        key = 'moksha.livesocket.websocket.client2server'
-                        if asbool(self.config.get(key, False)):
-                            # Simply forward on the message through the hub.
-                            self.moksha_hub.send_message(
-                                json['topic'],
-                                json['body'],
-                            )
+                        # Simply forward on the message through the hub.
+                        self.moksha_hub.send_message(
+                            json['topic'],
+                            json['body'],
+                        )
 
 
                 except Exception as e:
